@@ -18,9 +18,7 @@ var Schema = _mongoose2['default'].Schema;
 var ObjectId = Schema.Types.ObjectId;
 
 describe('mongoose-permission:unit:validate', function () {
-
   it('should create the resource successfully', function (done) {
-
     var permissions = [{
       module: 'location',
       type: 'module',
@@ -45,7 +43,6 @@ describe('mongoose-permission:unit:validate', function () {
   });
 
   it('Should pass if access is null', function (done) {
-
     var permissions = [{
       module: 'location',
       type: 'module',
@@ -60,7 +57,6 @@ describe('mongoose-permission:unit:validate', function () {
   });
 
   it('Should pass if access is undefined', function (done) {
-
     var permissions = [{
       module: 'location',
       type: 'module'
@@ -74,7 +70,6 @@ describe('mongoose-permission:unit:validate', function () {
   });
 
   it('Should pass if access is an empty array', function (done) {
-
     var permissions = [{
       module: 'location',
       type: 'module',
@@ -89,7 +84,6 @@ describe('mongoose-permission:unit:validate', function () {
   });
 
   it('Should fail if type is invalid', function (done) {
-
     var permissions = [{
       module: 'location',
       type: 'anything',
@@ -112,7 +106,6 @@ describe('mongoose-permission:unit:validate', function () {
   });
 
   it('Should fail if access is invalid', function (done) {
-
     var permissions = [{
       module: 'location',
       type: 'module',
@@ -134,7 +127,6 @@ describe('mongoose-permission:unit:validate', function () {
   });
 
   it('Should fail if value is null when module is not "module"', function (done) {
-
     var permissions = [{
       module: 'zone',
       type: 'field',
@@ -150,6 +142,7 @@ describe('mongoose-permission:unit:validate', function () {
         path: 'permissions'
       });
     });
+
     done();
   });
 });

@@ -44,7 +44,6 @@ function createWithPermisstions(options) {
 
   // Create test
   it('should create the resource successfully', function (done) {
-
     var permissions = [{
       module: 'location',
       type: 'module',
@@ -74,7 +73,6 @@ function createWithPermisstions(options) {
   });
 
   it('Should pass if access is null', function (done) {
-
     var permissions = [{
       module: 'location',
       type: 'module',
@@ -93,7 +91,6 @@ function createWithPermisstions(options) {
   });
 
   it('Should pass if access is undefined', function (done) {
-
     var permissions = [{
       module: 'location',
       type: 'module'
@@ -111,7 +108,6 @@ function createWithPermisstions(options) {
   });
 
   it('Should pass if access is an empty array', function (done) {
-
     var permissions = [{
       module: 'location',
       type: 'module',
@@ -130,7 +126,6 @@ function createWithPermisstions(options) {
   });
 
   it('Should fail if type is invalid', function (done) {
-
     var permissions = [{
       module: 'location',
       type: 'anything',
@@ -154,7 +149,6 @@ function createWithPermisstions(options) {
   });
 
   it('Should fail if access is invalid', function (done) {
-
     var permissions = [{
       module: 'location',
       type: 'module',
@@ -187,7 +181,6 @@ function updatePermisstions(options) {
 
   // Update test
   it('should update the resource successfully', function (done) {
-
     var permissions = [{
       module: 'location',
       type: 'document',

@@ -10,14 +10,9 @@ var _mongoose = require('mongoose');
 
 var _mongoose2 = _interopRequireDefault(_mongoose);
 
-var _should = require('should');
-
-var _should2 = _interopRequireDefault(_should);
-
 var Schema = _mongoose2['default'].Schema;
 
 describe('mongoose-permission:unit:index', function () {
-
   it('Should attach permission schema', function (done) {
     var schema = new Schema({
       name: String

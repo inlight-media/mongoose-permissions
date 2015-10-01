@@ -3,16 +3,28 @@
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var _ = require('lodash');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+var _lodash = require('lodash');
+
+var _lodash2 = _interopRequireDefault(_lodash);
 
 exports['default'] = {
   validator: validatePermissions,
   message: 'Found an invalid permission'
 };
 
-function validatePermissions(permissions) {
+function isValueValid(type, value) {
+  // Optional if type is module, otherwise required
+  if (type !== 'module' && !value) {
+    return false;
+  }
+  return true;
+}
 
-  return _.every(permissions, function (permission) {
+function validatePermissions(permissions) {
+  return _lodash2['default'].every(permissions, function (permission) {
     var type = permission.type;
     var value = permission.value;
 
@@ -22,14 +34,5 @@ function validatePermissions(permissions) {
 
     return true;
   });
-}
-
-function isValueValid(type, value) {
-
-  // Optional if type is module, otherwise required
-  if (type !== 'module' && !value) {
-    return false;
-  }
-  return true;
 }
 module.exports = exports['default'];
