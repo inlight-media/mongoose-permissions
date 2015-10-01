@@ -37,7 +37,7 @@ function attachPermissionPlugin(schema) {
   };
 
   schema.add(permissions);
-  schema.path('permissions').validate(_validator2['default'].permissions);
+  schema.path('permissions').validate(_validator2['default']);
 }
 
 module.exports = exports['default'];

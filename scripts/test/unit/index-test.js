@@ -18,15 +18,15 @@ var Schema = _mongoose2['default'].Schema;
 
 describe('mongoose-permission:unit:index', function () {
 
-	it('Should attach permission schema', function (done) {
-		var schema = new Schema({
-			name: String
-		});
+  it('Should attach permission schema', function (done) {
+    var schema = new Schema({
+      name: String
+    });
 
-		schema.plugin(_schemaAttach2['default']);
+    schema.plugin(_schemaAttach2['default']);
 
-		schema.paths.should.have.property('permissions');
+    schema.paths.should.have.property('permissions');
 
-		done();
-	});
+    done();
+  });
 });

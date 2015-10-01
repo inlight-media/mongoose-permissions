@@ -6,13 +6,10 @@ Object.defineProperty(exports, '__esModule', {
 var _ = require('lodash');
 
 exports['default'] = {
-  permissions: {
-    validator: validatePermissions,
-    message: 'Found an invalid permission'
-  }
+  validator: validatePermissions,
+  message: 'Found an invalid permission'
 };
 
-// Validate each item. A valid item should have a score value that exists inside its scores array.
 function validatePermissions(permissions) {
 
   return _.every(permissions, function (permission) {
@@ -29,6 +26,7 @@ function validatePermissions(permissions) {
 
 function isValueValid(type, value) {
 
+  // Optional if type is module, otherwise required
   if (type !== 'module' && !value) {
     return false;
   }

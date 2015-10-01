@@ -14,5 +14,10 @@ var _schemaAttach = require('./schema/attach');
 
 var _schemaAttach2 = _interopRequireDefault(_schemaAttach);
 
+var _testSharedAttachPermission = require('./test/shared/attach-permission');
+
+var _testSharedAttachPermission2 = _interopRequireDefault(_testSharedAttachPermission);
+
 exports.validate = _validate2['default'];
-exports['default'] = _schemaAttach2['default'];
+exports.attach = _schemaAttach2['default'];
+exports.sharedTest = _testSharedAttachPermission2['default'];

@@ -1,5 +1,9 @@
 'use strict';
 
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
 var _lodash = require('lodash');
@@ -10,21 +14,14 @@ var _should = require('should');
 
 var _should2 = _interopRequireDefault(_should);
 
-var _supertest = require('supertest');
+var _mongoose = require('mongoose');
 
-var _supertest2 = _interopRequireDefault(_supertest);
+var _mongoose2 = _interopRequireDefault(_mongoose);
 
-var request = (0, _supertest2['default'])(test.app);
+var Schema = _mongoose2['default'].Schema;
+var ObjectId = Schema.Types.ObjectId;
 
-/**
- * creates a set of tests for create functionality
- * @param {String} options.url the url to tests against
- * @param {Function} options.fn an optional function for your own should.js assertions
- * @param {Object} options.authUser an optional user to use for authorization
- * @param {Object} options.validPayload valid payload that should success
- * @param {String} options.requiredFields space separated list of required fields for the model
- */
-module.exports = {
+exports['default'] = {
   schema: testSchema,
   create: createWithPermisstions,
   update: updatePermisstions
@@ -32,11 +29,8 @@ module.exports = {
 
 function testSchema(options) {
   var schema = options.schema;
-  // Schema test
   it('Should attach permission schema', function (done) {
-
     schema.paths.should.have.property('permissions');
-
     done();
   });
 }
@@ -46,6 +40,7 @@ function createWithPermisstions(options) {
   var validPayload = options.validPayload;
   var fn = options.fn || _lodash2['default'].noop;
   var authUser = options.authUser;
+  var request = options.request;
 
   // Create test
   it('should create the resource successfully', function (done) {
@@ -57,7 +52,7 @@ function createWithPermisstions(options) {
     }, {
       module: 'zone',
       type: 'document',
-      value: 'new ObjectId().toString()',
+      value: new ObjectId().toString(),
       access: ['create', 'read']
     }, {
       module: 'zone',
@@ -188,8 +183,9 @@ function updatePermisstions(options) {
   var validPayload = options.validPayload;
   var fn = options.fn || _lodash2['default'].noop;
   var authUser = options.authUser;
+  var request = options.request;
 
-  // Create test
+  // Update test
   it('should update the resource successfully', function (done) {
 
     var permissions = [{
@@ -216,3 +212,4 @@ function updatePermisstions(options) {
     });
   });
 }
+module.exports = exports['default'];

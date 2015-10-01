@@ -11,19 +11,22 @@ var _mongoose = require('mongoose');
 
 var _mongoose2 = _interopRequireDefault(_mongoose);
 
-var _schemaSchema = require('./schema/schema');
+var _schemaAttach = require('./schema/attach');
 
-var _schemaSchema2 = _interopRequireDefault(_schemaSchema);
+var _schemaAttach2 = _interopRequireDefault(_schemaAttach);
 
 var Schema = _mongoose2['default'].Schema;
+var schema = new Schema({});
+schema.plugin(_schemaAttach2['default']);
 
-function validate(permission, callback) {
-  var schema = new Schema({});
-  schema.plugin(_schemaSchema2['default']);
+// Compile a mock schema for permission validation
+var Permissions = _mongoose2['default'].model('mongoose-permissions-for-validation', schema);
 
-  var Model = schema.Model;
-  var model = new Model(permission);
-  model.validate(callback);
+function validate(permissions, callback) {
+  var perms = new Permissions({
+    permissions: permissions
+  });
+  perms.validate(callback);
 }
 
 module.exports = exports['default'];
