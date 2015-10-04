@@ -74,6 +74,8 @@ validate(permissions, function callback(err){
 })
 ```
 
+This plugin will create a schema named `mongoose-permissions-for-validation` for the validation.
+
 There are two possible error outputs at function callback.
 
 The first error style looks like:
