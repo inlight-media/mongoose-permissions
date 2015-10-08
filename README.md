@@ -15,7 +15,7 @@ You will need to install **Mongoose** for your application. We do not require an
 ```
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var attachPermission = require('mongoose-permissions').attach;
+var permissionSchema = require('mongoose-permissions').permissionSchema;
 
 var testSchema = new Schema({
     application: String,
@@ -23,27 +23,32 @@ var testSchema = new Schema({
     created: Date
 });
 
-testSchema.plugin(attachPermission);
+testSchema.plugin(permissionSchema);
 ```
 
 The code above will attache a Permission schema to `testSchema`. The permission schema is structured as the following:
 
 ```
 permissions: [{
-    module: {
+      module: {
         type: String,
         required: true
-    }, // (required) Name of module, e.g. zone
-    type: {
+      },
+      type: {
         type: String,
         enum: ['module', 'document', 'field'],
         default: 'module'
-    }, // (enum, defaults to module) module, document, field
-    value: String, // (optional if type is module, otherwise required) Either document id or property path of field
-    access: [{
-            type: String,
-            enum: ['create', 'read', 'update', 'delete']
-        }] // (enum, or null??) create, read, update, delete
+      },
+      value: String, // (optional if type is module, otherwise required) Either document id or property path of field
+      access: [{
+        type: String,
+        enum: ['create', 'read', 'update', 'delete']
+      }],
+      strategy: {
+        type: String,
+        enum: ['include', 'exclude'] // optional, only makes sense if type is module
+      }
+    }]
 }]
 ```
 
